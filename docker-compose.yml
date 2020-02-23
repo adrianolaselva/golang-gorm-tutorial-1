@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  golang-gorm-tutorial-1:
+    container_name: golang-gorm-tutorial-1
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pizza
+    command: mysqld --innodb-buffer-pool-size=64M
+    volumes:
+      - golang-gorm-tutorial-1-db-data:/var/lib/mysql
+    ports:
+      - 13306:3306
+    networks:
+      - stack
+networks: {stack: {}}
+volumes:
+  golang-gorm-tutorial-1-db-data:
